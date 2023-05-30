@@ -1,0 +1,76 @@
+\begin{theindex}
+
+  \item {configurePin}
+    \subitem {GPIO}, \hyperpage{8}
+  \item {configurePort}
+    \subitem {GPIO}, \hyperpage{8}
+  \item {Counter}, \hyperpage{7}
+
+  \indexspace
+
+  \item {getPort}
+    \subitem {GPIO}, \hyperpage{9}
+  \item {GPIO}, \hyperpage{7}
+    \subitem {configurePin}, \hyperpage{8}
+    \subitem {configurePort}, \hyperpage{8}
+    \subitem {getPort}, \hyperpage{9}
+    \subitem {GPIO}, \hyperpage{8}
+    \subitem {resetPin}, \hyperpage{9}
+    \subitem {setPin}, \hyperpage{9}
+    \subitem {setPort}, \hyperpage{9}
+    \subitem {togglePin}, \hyperpage{10}
+
+  \indexspace
+
+  \item {ModCounter}, \hyperpage{10}
+  \item {Motor}, \hyperpage{11}
+
+  \indexspace
+
+  \item {performStateLogic}
+    \subitem {State0}, \hyperpage{13}
+    \subitem {State1}, \hyperpage{14}
+    \subitem {State2}, \hyperpage{15}
+    \subitem {State3}, \hyperpage{16}
+
+  \indexspace
+
+  \item {resetPin}
+    \subitem {GPIO}, \hyperpage{9}
+
+  \indexspace
+
+  \item {setPin}
+    \subitem {GPIO}, \hyperpage{9}
+  \item {setPort}
+    \subitem {GPIO}, \hyperpage{9}
+  \item {State}, \hyperpage{11}
+  \item {State0}, \hyperpage{12}
+    \subitem {performStateLogic}, \hyperpage{13}
+    \subitem {transitionToNextState}, \hyperpage{13}
+  \item {State1}, \hyperpage{13}
+    \subitem {performStateLogic}, \hyperpage{14}
+    \subitem {transitionToNextState}, \hyperpage{14}
+  \item {State2}, \hyperpage{14}
+    \subitem {performStateLogic}, \hyperpage{15}
+    \subitem {transitionToNextState}, \hyperpage{15}
+  \item {State3}, \hyperpage{15}
+    \subitem {performStateLogic}, \hyperpage{16}
+    \subitem {transitionToNextState}, \hyperpage{16}
+
+  \indexspace
+
+  \item {togglePin}
+    \subitem {GPIO}, \hyperpage{10}
+  \item {transitionToNextState}
+    \subitem {State0}, \hyperpage{13}
+    \subitem {State1}, \hyperpage{14}
+    \subitem {State2}, \hyperpage{15}
+    \subitem {State3}, \hyperpage{16}
+
+  \indexspace
+
+  \item {UserButton}, \hyperpage{16}
+  \item {UserLED}, \hyperpage{17}
+
+\end{theindex}

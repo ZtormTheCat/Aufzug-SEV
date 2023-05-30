@@ -1,0 +1,68 @@
+\doxysection{State2 Class Reference}
+\hypertarget{class_state2}{}\label{class_state2}\index{State2@{State2}}
+Inheritance diagram for State2\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_state2}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_state2_a829141be3b14381b2971e376b97166ba}{perform\+State\+Logic}} () override
+\item 
+\mbox{\hyperlink{class_state}{State}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_state2_a5f342037f47ec3082da63b38e288d535}{transition\+To\+Next\+State}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_state}{State}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries State} (uint8\+\_\+t curr\+Cnt, uint8\+\_\+t strd\+Cnt)
+\item 
+virtual void {\bfseries perform\+State\+Logic} ()=0
+\item 
+virtual \mbox{\hyperlink{class_state}{State}} \texorpdfstring{$\ast$}{*} {\bfseries transition\+To\+Next\+State} ()=0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_state}{State}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Init} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_state}{State}}}
+\begin{DoxyCompactItemize}
+\item 
+volatile const uint8\+\_\+t \texorpdfstring{$\ast$}{*} {\bfseries curr\+Cnt\+Val}
+\item 
+volatile const uint8\+\_\+t \texorpdfstring{$\ast$}{*} {\bfseries strd\+Cnt\+Val}
+\item 
+\mbox{\hyperlink{class_motor}{Motor}} \texorpdfstring{$\ast$}{*} {\bfseries Motor\+LED}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_state2_a829141be3b14381b2971e376b97166ba}\label{class_state2_a829141be3b14381b2971e376b97166ba} 
+\index{State2@{State2}!performStateLogic@{performStateLogic}}
+\index{performStateLogic@{performStateLogic}!State2@{State2}}
+\doxysubsubsection{\texorpdfstring{performStateLogic()}{performStateLogic()}}
+{\footnotesize\ttfamily void State2\+::perform\+State\+Logic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_state}{State}}.
+
+\Hypertarget{class_state2_a5f342037f47ec3082da63b38e288d535}\label{class_state2_a5f342037f47ec3082da63b38e288d535} 
+\index{State2@{State2}!transitionToNextState@{transitionToNextState}}
+\index{transitionToNextState@{transitionToNextState}!State2@{State2}}
+\doxysubsubsection{\texorpdfstring{transitionToNextState()}{transitionToNextState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_state}{State}} \texorpdfstring{$\ast$}{*} State2\+::transition\+To\+Next\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_state}{State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+State\+Machine.\+h\item 
+State\+Machine.\+cpp\end{DoxyCompactItemize}

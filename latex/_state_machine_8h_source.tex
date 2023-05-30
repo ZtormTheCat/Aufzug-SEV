@@ -1,0 +1,47 @@
+\doxysection{State\+Machine.\+h}
+\hypertarget{_state_machine_8h_source}{}\label{_state_machine_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}Motor.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_state}{State}}\ \{}
+\DoxyCodeLine{00004\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00005\ \ \ \ \ \textcolor{keyword}{volatile}\ \textcolor{keyword}{const}\ uint8\_t*\ currCntVal;}
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keyword}{volatile}\ \textcolor{keyword}{const}\ uint8\_t*\ strdCntVal;}
+\DoxyCodeLine{00007\ \ \ \ \ \mbox{\hyperlink{class_motor}{Motor}}\ *MotorLED;}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordtype}{void}\ Init();}
+\DoxyCodeLine{00009\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{class_state}{State}}(uint8\_t\ currCnt,\ uint8\_t\ strdCnt);}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ performStateLogic()\ =\ 0;}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_state}{State}}*\ transitionToNextState()\ =\ 0;}
+\DoxyCodeLine{00013\ \};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{/*Stillstand*/}}
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_state0}{State0}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_state}{State}}\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_state0}{State0}}(uint8\_t\ currCnt,\ uint8\_t\ strdCnt);}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ performStateLogic()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{class_state}{State}}*\ transitionToNextState()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00021\ \};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{/*Nach\ oben*/}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_state1}{State1}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_state}{State}}\ \{}
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ performStateLogic()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_state}{State}}*\ transitionToNextState()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{comment}{/*Nach\ Unten*/}}
+\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_state2}{State2}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_state}{State}}\ \{}
+\DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ performStateLogic()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{class_state}{State}}*\ transitionToNextState()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00035\ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{comment}{/*Störung*/}}
+\DoxyCodeLine{00038\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_state3}{State3}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_state}{State}}\ \{}
+\DoxyCodeLine{00039\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ performStateLogic()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_state}{State}}*\ transitionToNextState()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00042\ \};}
+
+\end{DoxyCode}

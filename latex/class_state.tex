@@ -1,0 +1,44 @@
+\doxysection{State Class Reference}
+\hypertarget{class_state}{}\label{class_state}\index{State@{State}}
+Inheritance diagram for State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_state}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_state_a2c70b79b010f6ecc9f3aa3f2dbed3052}\label{class_state_a2c70b79b010f6ecc9f3aa3f2dbed3052} 
+{\bfseries State} (uint8\+\_\+t curr\+Cnt, uint8\+\_\+t strd\+Cnt)
+\item 
+\Hypertarget{class_state_a47476f695d088a8aa3c8a873fc0ffbc4}\label{class_state_a47476f695d088a8aa3c8a873fc0ffbc4} 
+virtual void {\bfseries perform\+State\+Logic} ()=0
+\item 
+\Hypertarget{class_state_aab77f9778db7de5aaa434400f4454270}\label{class_state_aab77f9778db7de5aaa434400f4454270} 
+virtual \mbox{\hyperlink{class_state}{State}} \texorpdfstring{$\ast$}{*} {\bfseries transition\+To\+Next\+State} ()=0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_state_a889d2003e2ede59d4d9819ddff22d773}\label{class_state_a889d2003e2ede59d4d9819ddff22d773} 
+void {\bfseries Init} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_state_af825b97d1d4f0e59f7f1c477a86a3b39}\label{class_state_af825b97d1d4f0e59f7f1c477a86a3b39} 
+volatile const uint8\+\_\+t \texorpdfstring{$\ast$}{*} {\bfseries curr\+Cnt\+Val}
+\item 
+\Hypertarget{class_state_ab8bb9e82c6dd26201e9803564fbb317c}\label{class_state_ab8bb9e82c6dd26201e9803564fbb317c} 
+volatile const uint8\+\_\+t \texorpdfstring{$\ast$}{*} {\bfseries strd\+Cnt\+Val}
+\item 
+\Hypertarget{class_state_a9bb05ce0ff93d4d76767d1789442b1f3}\label{class_state_a9bb05ce0ff93d4d76767d1789442b1f3} 
+\mbox{\hyperlink{class_motor}{Motor}} \texorpdfstring{$\ast$}{*} {\bfseries Motor\+LED}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+State\+Machine.\+h\item 
+State\+Machine.\+cpp\end{DoxyCompactItemize}

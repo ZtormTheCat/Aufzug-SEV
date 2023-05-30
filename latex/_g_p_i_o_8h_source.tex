@@ -1,0 +1,106 @@
+\doxysection{GPIO.\+h}
+\hypertarget{_g_p_i_o_8h_source}{}\label{_g_p_i_o_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}Def.h"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ \_GPIO\_}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ \_GPIO\_}}
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_g_p_i_o}{GPIO}}}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{volatile}\ uint32\_t*\ GPIOx\_MODER;\ \ \ \ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{volatile}\ uint32\_t*\ GPIOx\_OTYPER;\ \ \ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{volatile}\ uint32\_t*\ GPIOx\_OSPEEDR;\ \ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{volatile}\ uint32\_t*\ GPIOx\_PUPDR;\ \ \ \ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{volatile}\ uint32\_t*\ GPIOx\_IDR;\ \ \ \ \ \ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{volatile}\ uint32\_t*\ GPIOx\_ODR;\ \ \ \ \ \ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{volatile}\ uint32\_t*\ GPIOx\_BSRRL;\ \ \ \ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{volatile}\ uint32\_t*\ GPIOx\_BSRRH;\ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{volatile}\ uint32\_t*\ RCC\_AHB1ENR;\ \ \ \ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \mbox{\hyperlink{class_g_p_i_o_a1f5e19badc738404ecc0586765592db2}{GPIO}}(uint32\_t\ GPIOx\_BASE)}
+\DoxyCodeLine{00027\ \ \ \ \ :\ GPIOx\_MODER((volatile\ uint32\_t*)\ GPIOx\_BASE),}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ GPIOx\_OTYPER(GPIOx\_MODER\ +\ 1),}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ GPIOx\_OSPEEDR(GPIOx\_MODER\ +\ 2),}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ GPIOx\_PUPDR(GPIOx\_MODER\ +\ 3),}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ GPIOx\_IDR(GPIOx\_MODER\ +\ 4),}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ GPIOx\_ODR(GPIOx\_MODER\ +\ 5),}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ GPIOx\_BSRRL((volatile\ uint32\_t*)\ (GPIOx\_BASE\ +\ 0x18)),}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ GPIOx\_BSRRH((volatile\ uint32\_t*)\ (GPIOx\_BASE\ +\ 0x1A)),}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ RCC\_AHB1ENR((volatile\ uint32\_t*)\ 0x40023830)}
+\DoxyCodeLine{00036\ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ Calculate\ which\ CLock\ should\ be\ activated}}
+\DoxyCodeLine{00038\ \ \ \ \ uint32\_t\ registerByte\ =\ (GPIOx\_BASE\ \&\ 0xFF00)\ >>\ 8;}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{int}\ registerNumber\ =\ (registerByte)\ /\ 0x04;}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ Activate\ the\ corresponding\ Bit}}
+\DoxyCodeLine{00041\ \ \ \ \ *RCC\_AHB1ENR\ |=\ (0x01\ <<\ registerNumber);}
+\DoxyCodeLine{00042\ \ \ \}}
+\DoxyCodeLine{00051\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_g_p_i_o_a3a6b1162800e3ed804fbb032475b5158}{configurePin}}(uint8\_t\ pin,\ uint8\_t\ mode,\ uint8\_t\ outputType,\ uint8\_t\ speed,\ uint8\_t\ pull)\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ register\ offset\ for\ the\ specified\ pin}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ uint32\_t\ offset\ =\ pin\ *\ 2;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Configure\ pin\ mode}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ *GPIOx\_MODER\ \&=\ \string~(0x03\ <<\ offset);\ \ \ \ \textcolor{comment}{//\ Clear\ mode\ bits}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ *GPIOx\_MODER\ |=\ (mode\ <<\ offset);\ \ \ \ \ \textcolor{comment}{//\ Set\ mode\ bits}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Configure\ output\ type}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ *GPIOx\_OTYPER\ \&=\ \string~(0x01\ <<\ pin);\ \ \ \ \ \ \textcolor{comment}{//\ Clear\ output\ type\ bit}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ *GPIOx\_OTYPER\ |=\ (outputType\ <<\ pin);\ \textcolor{comment}{//\ Set\ output\ type\ bit}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Configure\ output\ speed}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ *GPIOx\_OSPEEDR\ \&=\ \string~(0x03\ <<\ offset);\ \ \textcolor{comment}{//\ Clear\ speed\ bits}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ *GPIOx\_OSPEEDR\ |=\ (speed\ <<\ offset);\ \ \textcolor{comment}{//\ Set\ speed\ bits}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Configure\ pull-\/up/pull-\/down}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ *GPIOx\_PUPDR\ \&=\ \string~(0x03\ <<\ offset);\ \ \ \ \textcolor{comment}{//\ Clear\ pull\ bits}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ *GPIOx\_PUPDR\ |=\ (pull\ <<\ offset);\ \ \ \ \ \textcolor{comment}{//\ Set\ pull\ bits}}
+\DoxyCodeLine{00070\ \ \ \ \ \}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_g_p_i_o_a5bfbfbf4732ed84011b418900f3cb105}{configurePort}}(uint16\_t\ mask)\{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (GPIOx\_MODER\ ==\ (\textcolor{keyword}{volatile}\ uint32\_t*)Def::enumPort::PortA)\{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 16;\ ++i)\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ bit\ =\ (mask\ >>\ i)\ \&\ 1;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i\ ==\ 13\ or\ i\ ==\ 14)\{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_g_p_i_o_a3a6b1162800e3ed804fbb032475b5158}{configurePin}}(i,\ 2,\ 0,\ 0,\ 0);}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_g_p_i_o_a3a6b1162800e3ed804fbb032475b5158}{configurePin}}(i,\ bit,\ 0,\ 0,\ 0);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 16;\ ++i)\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ bit\ =\ (mask\ >>\ i)\ \&\ 1;}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_g_p_i_o_a3a6b1162800e3ed804fbb032475b5158}{configurePin}}(i,\ bit,\ 0,\ 0,\ 0);}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00095\ \ \ \ \ \}}
+\DoxyCodeLine{00096\ \ \ \ \ }
+\DoxyCodeLine{00101\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_g_p_i_o_aec174f859d802acdf9cd6bc1e2ae69bf}{setPin}}(uint16\_t\ pin)\ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ *GPIOx\_BSRRL\ |=\ (0x01\ <<\ pin);\ \ \textcolor{comment}{//\ Set\ pin}}
+\DoxyCodeLine{00103\ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \ \ \ \ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_g_p_i_o_a19857bbd58b781d7f6d72d72235f2860}{resetPin}}(uint16\_t\ pin)\ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ *GPIOx\_BSRRH\ |=\ (0x01\ <<\ pin);\ \ \textcolor{comment}{//\ Reset\ pin}}
+\DoxyCodeLine{00111\ \ \ \ \ \}}
+\DoxyCodeLine{00112\ \ \ \ \ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_g_p_i_o_ae0c00bd5ddc8b15fe99201e723e245eb}{togglePin}}(uint16\_t\ pin)\ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ *GPIOx\_ODR\ \string^=\ (0x01\ <<\ pin);}
+\DoxyCodeLine{00119\ \ \ \ \ \}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_g_p_i_o_a3c66599f96440bc940961118cb6b7292}{setPort}}(uint16\_t\ mask)\{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ *GPIOx\_ODR\ =\ mask;}
+\DoxyCodeLine{00127\ \ \ \ \ \}}
+\DoxyCodeLine{00128\ \ \ \ \ }
+\DoxyCodeLine{00133\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{class_g_p_i_o_a59c7ce2212180ce4b5d7a90af4dfb95b}{getPort}}()\{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *GPIOx\_IDR\ \&\ 0xFFFF;}
+\DoxyCodeLine{00136\ \ \ \ \ \}}
+\DoxyCodeLine{00137\ \};}
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ }
+
+\end{DoxyCode}

@@ -1,0 +1,59 @@
+\doxysection{User\+Button.\+h}
+\hypertarget{_user_button_8h_source}{}\label{_user_button_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//UserButton.h}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}GPIO.h"{}}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#ifndef\ \_USERBUTTON\_}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ \_USERBUTTON\_}}
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_user_button}{UserButton}}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00009\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ ButtonPortAddr;}
+\DoxyCodeLine{00010\ \ \ \mbox{\hyperlink{class_g_p_i_o}{GPIO}}\ *ButtonPort;}
+\DoxyCodeLine{00011\ \ \ }
+\DoxyCodeLine{00012\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ debounceDelay\ =\ 50;}
+\DoxyCodeLine{00013\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ debounceCounter;}
+\DoxyCodeLine{00014\ \ \ uint16\_t\ buttonState;}
+\DoxyCodeLine{00015\ \ \ uint16\_t\ lastButtonState;}
+\DoxyCodeLine{00016\ \ \ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \textcolor{comment}{//TODO:\ change\ address\ to\ PortB}}
+\DoxyCodeLine{00019\ \ \ \mbox{\hyperlink{class_user_button}{UserButton}}():ButtonPortAddr(0x40020000)}
+\DoxyCodeLine{00020\ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ ButtonPort\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_g_p_i_o}{GPIO}}(ButtonPortAddr);}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//Init();}}
+\DoxyCodeLine{00023\ \ \ \}}
+\DoxyCodeLine{00024\ \ \ }
+\DoxyCodeLine{00025\ \ \ \textcolor{keywordtype}{void}\ Init()}
+\DoxyCodeLine{00026\ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ ButtonPort-\/>\mbox{\hyperlink{class_g_p_i_o_a5bfbfbf4732ed84011b418900f3cb105}{configurePort}}(0xFFFF);}
+\DoxyCodeLine{00028\ \ \ \}}
+\DoxyCodeLine{00029\ \ \ }
+\DoxyCodeLine{00030\ \ \ \textcolor{keywordtype}{bool}\ readButtonState(uint16\_t\ pin)}
+\DoxyCodeLine{00031\ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ uint16\_t\ readMask\ =\ 0x01\ <<\ pin;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{bool})(ButtonPort-\/>\mbox{\hyperlink{class_g_p_i_o_a59c7ce2212180ce4b5d7a90af4dfb95b}{getPort}}()\ \&\ readMask);}
+\DoxyCodeLine{00034\ \ \ \}}
+\DoxyCodeLine{00035\ \ \ }
+\DoxyCodeLine{00036\ \ \ }
+\DoxyCodeLine{00037\ \ \ \textcolor{keywordtype}{char}\ Pressed()}
+\DoxyCodeLine{00038\ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//check\ current\ state\ of\ the\ user-\/input}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{bool}\ StartButton\ \ =\ readButtonState(9);\ \textcolor{comment}{//TODO:\ change\ to\ needed\ pin\ number}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{bool}\ SelectButton\ =\ readButtonState(10);\ \textcolor{comment}{//TODO:\ change\ to\ needed\ pin\ number}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//bool\ SensorButton\ =\ readButtonState(10);}}
+\DoxyCodeLine{00043\ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordflow}{if}\ \ \ \ \ \ (StartButton\ \&\&\ SelectButton)}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{charliteral}{'X'};}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (StartButton\ \&\&\ !SelectButton)}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{charliteral}{'B'};}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (!StartButton\ \&\&\ SelectButton)}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{charliteral}{'F'};}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00052\ \ \ \}}
+\DoxyCodeLine{00053\ \};}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

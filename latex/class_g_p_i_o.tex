@@ -1,0 +1,133 @@
+\doxysection{GPIO Class Reference}
+\hypertarget{class_g_p_i_o}{}\label{class_g_p_i_o}\index{GPIO@{GPIO}}
+
+
+{\ttfamily \#include $<$GPIO.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_g_p_i_o_a1f5e19badc738404ecc0586765592db2}{GPIO}} (uint32\+\_\+t GPIOx\+\_\+\+BASE)
+\item 
+void \mbox{\hyperlink{class_g_p_i_o_a3a6b1162800e3ed804fbb032475b5158}{configure\+Pin}} (uint8\+\_\+t pin, uint8\+\_\+t mode, uint8\+\_\+t output\+Type, uint8\+\_\+t speed, uint8\+\_\+t pull)
+\item 
+void \mbox{\hyperlink{class_g_p_i_o_a5bfbfbf4732ed84011b418900f3cb105}{configure\+Port}} (uint16\+\_\+t mask)
+\item 
+void \mbox{\hyperlink{class_g_p_i_o_aec174f859d802acdf9cd6bc1e2ae69bf}{set\+Pin}} (uint16\+\_\+t pin)
+\item 
+void \mbox{\hyperlink{class_g_p_i_o_a19857bbd58b781d7f6d72d72235f2860}{reset\+Pin}} (uint16\+\_\+t pin)
+\item 
+void \mbox{\hyperlink{class_g_p_i_o_ae0c00bd5ddc8b15fe99201e723e245eb}{toggle\+Pin}} (uint16\+\_\+t pin)
+\item 
+void \mbox{\hyperlink{class_g_p_i_o_a3c66599f96440bc940961118cb6b7292}{set\+Port}} (uint16\+\_\+t mask)
+\item 
+uint16\+\_\+t \mbox{\hyperlink{class_g_p_i_o_a59c7ce2212180ce4b5d7a90af4dfb95b}{get\+Port}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class to directly control the \doxylink{class_g_p_i_o}{GPIO} Ports and Pins 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_g_p_i_o_a1f5e19badc738404ecc0586765592db2}\label{class_g_p_i_o_a1f5e19badc738404ecc0586765592db2} 
+\index{GPIO@{GPIO}!GPIO@{GPIO}}
+\index{GPIO@{GPIO}!GPIO@{GPIO}}
+\doxysubsubsection{\texorpdfstring{GPIO()}{GPIO()}}
+{\footnotesize\ttfamily GPIO\+::\+GPIO (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{GPIOx\+\_\+\+BASE }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em GPIOx\+\_\+\+BASE} & The Base Adress of the \doxylink{class_g_p_i_o}{GPIO} Port \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_g_p_i_o_a3a6b1162800e3ed804fbb032475b5158}\label{class_g_p_i_o_a3a6b1162800e3ed804fbb032475b5158} 
+\index{GPIO@{GPIO}!configurePin@{configurePin}}
+\index{configurePin@{configurePin}!GPIO@{GPIO}}
+\doxysubsubsection{\texorpdfstring{configurePin()}{configurePin()}}
+{\footnotesize\ttfamily void GPIO\+::configure\+Pin (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{pin,  }\item[{uint8\+\_\+t}]{mode,  }\item[{uint8\+\_\+t}]{output\+Type,  }\item[{uint8\+\_\+t}]{speed,  }\item[{uint8\+\_\+t}]{pull }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin} & The pin to be configured \\
+\hline
+{\em mode} & 0 for Input, 1 for Output \\
+\hline
+{\em output\+Type} & 0 for Push-\/\+Pull, 1 for Open-\/\+Drain \\
+\hline
+{\em speed} & 0 for low speed \\
+\hline
+{\em 0} & no Pull-\/\+Up/\+Pull-\/down, 1 for Pull-\/\+Up, 2 for Pull-\/\+Down \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_g_p_i_o_a5bfbfbf4732ed84011b418900f3cb105}\label{class_g_p_i_o_a5bfbfbf4732ed84011b418900f3cb105} 
+\index{GPIO@{GPIO}!configurePort@{configurePort}}
+\index{configurePort@{configurePort}!GPIO@{GPIO}}
+\doxysubsubsection{\texorpdfstring{configurePort()}{configurePort()}}
+{\footnotesize\ttfamily void GPIO\+::configure\+Port (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mask }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sets each pin of the port to either input or output Other Settings are\+: Push-\/\+Pull, 2MHz low speed, no Pull-\/\+Up/\+Pull-\/\+Down 
+\begin{DoxyParams}{Parameters}
+{\em mask} & The mask to set the individual pins, 0 for input, 1 for Output \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_g_p_i_o_a59c7ce2212180ce4b5d7a90af4dfb95b}\label{class_g_p_i_o_a59c7ce2212180ce4b5d7a90af4dfb95b} 
+\index{GPIO@{GPIO}!getPort@{getPort}}
+\index{getPort@{getPort}!GPIO@{GPIO}}
+\doxysubsubsection{\texorpdfstring{getPort()}{getPort()}}
+{\footnotesize\ttfamily uint16\+\_\+t GPIO\+::get\+Port (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the states of all inputs of a specific port \begin{DoxyReturn}{Returns}
+The currently active inputs 
+\end{DoxyReturn}
+\Hypertarget{class_g_p_i_o_a19857bbd58b781d7f6d72d72235f2860}\label{class_g_p_i_o_a19857bbd58b781d7f6d72d72235f2860} 
+\index{GPIO@{GPIO}!resetPin@{resetPin}}
+\index{resetPin@{resetPin}!GPIO@{GPIO}}
+\doxysubsubsection{\texorpdfstring{resetPin()}{resetPin()}}
+{\footnotesize\ttfamily void GPIO\+::reset\+Pin (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{pin }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sets the desired output Pin to low 
+\begin{DoxyParams}{Parameters}
+{\em pin} & The Pin to be reset \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_g_p_i_o_aec174f859d802acdf9cd6bc1e2ae69bf}\label{class_g_p_i_o_aec174f859d802acdf9cd6bc1e2ae69bf} 
+\index{GPIO@{GPIO}!setPin@{setPin}}
+\index{setPin@{setPin}!GPIO@{GPIO}}
+\doxysubsubsection{\texorpdfstring{setPin()}{setPin()}}
+{\footnotesize\ttfamily void GPIO\+::set\+Pin (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{pin }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sets the desired Output Pin to High 
+\begin{DoxyParams}{Parameters}
+{\em pin} & The Pin to be set \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_g_p_i_o_a3c66599f96440bc940961118cb6b7292}\label{class_g_p_i_o_a3c66599f96440bc940961118cb6b7292} 
+\index{GPIO@{GPIO}!setPort@{setPort}}
+\index{setPort@{setPort}!GPIO@{GPIO}}
+\doxysubsubsection{\texorpdfstring{setPort()}{setPort()}}
+{\footnotesize\ttfamily void GPIO\+::set\+Port (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mask }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sets multiple Output Pins at once, depending on the mask 
+\begin{DoxyParams}{Parameters}
+{\em mask} & Mask to select which Pins to set \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_g_p_i_o_ae0c00bd5ddc8b15fe99201e723e245eb}\label{class_g_p_i_o_ae0c00bd5ddc8b15fe99201e723e245eb} 
+\index{GPIO@{GPIO}!togglePin@{togglePin}}
+\index{togglePin@{togglePin}!GPIO@{GPIO}}
+\doxysubsubsection{\texorpdfstring{togglePin()}{togglePin()}}
+{\footnotesize\ttfamily void GPIO\+::toggle\+Pin (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{pin }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Toggles the desired Output Pin 
+\begin{DoxyParams}{Parameters}
+{\em pin} & The Pin to be toggled \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+GPIO.\+h\end{DoxyCompactItemize}
