@@ -1,12 +1,9 @@
+#include <iostream>
 #include "Motor.h"
-#include "Def.h"
 
-//using namespace Def;
+using namespace std;
 
-Motor::Motor()
-{
-  
-}
+Motor::Motor(){}
 
 void Motor::setMotorState(uint8_t motorState)
 {
