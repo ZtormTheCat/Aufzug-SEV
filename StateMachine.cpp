@@ -17,6 +17,7 @@ State::State(UserLED* led, Motor* mot, UserButton* but, Counter* cnt):
 
 void State0::performStateLogic()
 {
+    strdCnt = *currCntVal;
     uLED->SetValue((uint8_t)*currCntVal);
     uMot->setMotorState((uint8_t)Still);
 };
