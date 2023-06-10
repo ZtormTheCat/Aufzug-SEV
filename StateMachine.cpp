@@ -45,7 +45,7 @@ void State1::performStateLogic()
 
 State* State1::transitionToNextState()
 {
-    if(uBut->Pressed()== '?'){
+    if(uBut->Pressed()== 'S'){
         return new State0();
     }
     if (uBut->Pressed()=='X'){
@@ -61,7 +61,7 @@ void State2::performStateLogic()
 
 State* State2::transitionToNextState()
 {
-    if(uBut->Pressed()== '?'){ //TODO: Bedingung festlegen wenn angekommen
+    if(uBut->Pressed()== 'S'){
         return new State0();
     }
     if (uBut->Pressed()=='X'){
@@ -93,7 +93,7 @@ int startStateMachine() {
         delete currentState;
         
         // Break the loop if nextState is nullptr (termination condition)
-        if (nextState == nullptr) { //TODO: Abbruchbedingung festlegen
+        if (nextState == nullptr) { //TODO: Abbruchbedingung festlegen (optional)
             break;
         }
         
