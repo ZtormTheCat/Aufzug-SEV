@@ -17,7 +17,6 @@ State::State(UserLED* led, Motor* mot, UserButton* but, Counter* cnt):
 
 void State0::performStateLogic()
 {
-    strdCnt = *currCntVal;
     uLED->SetValue((uint8_t)*currCntVal);
     uMot->setMotorState((uint8_t)Still);
 };
@@ -25,9 +24,11 @@ void State0::performStateLogic()
 State* State0::transitionToNextState()
 {
     if (*currCntVal>strdCnt && uBut->Pressed()=='B'){
+        strdCnt = *currCntVal;
         return new State1();
     }
     else if(*currCntVal<strdCnt && uBut->Pressed()=='B'){
+        strdCnt = *currCntVal;
         return new State2();
     }
 
