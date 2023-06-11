@@ -1,3 +1,4 @@
+.gitignore
 Counter.h
 GPIO_CPP.*
 GPIO.h
