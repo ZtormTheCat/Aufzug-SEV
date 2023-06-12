@@ -5,13 +5,6 @@
  * 
  */
 class State {
-protected:
-    UserLED* uLED; //< Object-Reference from UserLED to set LED's
-    Motor* uMot; //< Object-Reference from Motor to set Motor-States
-    UserButton* uBut; //< Object-Reference from UserButton to get Button-Values
-    Counter* uCnt; //< Object-Reference from Counter to get Count-Values
-    volatile int* currCntVal; //< Current Counter Value: Volatile Integer pointing to a Return-Value
-    int strdCnt; //< Stored Counter Value
 public:
 /**
  * @brief Construct a new State:: State object
@@ -21,7 +14,6 @@ public:
  * @param but Object of an exsiting UserButton-Instance
  * @param cnt Object of an exsiting Counter-Instance
  */
-    State(UserLED* led, Motor* mot, UserButton* but,Counter* cnt);
     /**
      * @brief Executes State-Behavior
      * 
@@ -37,12 +29,19 @@ public:
 
 /*Stillstand*/
 class State0 : public State {
+    protected:
+    UserLED* uLED; //< Object-Reference from UserLED to set LED's
+    Motor* uMot; //< Object-Reference from Motor to set Motor-States
+    UserButton* uBut; //< Object-Reference from UserButton to get Button-Values
+    Counter* uCnt; //< Object-Reference from Counter to get Count-Values
+    volatile int* currCntVal; //< Current Counter Value: Volatile Integer pointing to a Return-Value
+    int strdCnt; //< Stored Counter Value
 public:
-    State0();
     /**
      * @brief Override for Base-Class: State
      * 
      */
+    State0(UserLED* led, Motor* mot, UserButton* but, Counter* cnt);
     void performStateLogic() override;
     /**
      * @brief Override for Base-Class: State
@@ -53,8 +52,19 @@ public:
 
 /*Nach oben*/
 class State1 : public State {
+protected:
+    UserLED* uLED; //< Object-Reference from UserLED to set LED's
+    Motor* uMot; //< Object-Reference from Motor to set Motor-States
+    UserButton* uBut; //< Object-Reference from UserButton to get Button-Values
+    Counter* uCnt; //< Object-Reference from Counter to get Count-Values
+    volatile int* currCntVal; //< Current Counter Value: Volatile Integer pointing to a Return-Value
+    int strdCnt; //< Stored Counter Value
 public:
-    State1();
+    /**
+     * @brief Override for Base-Class: State
+     * 
+     */
+    State1(UserLED* led, Motor* mot, UserButton* but, Counter* cnt);
     /**
      * @brief Override for Base-Class: State
      * 
@@ -69,8 +79,19 @@ public:
 
 /*Nach Unten*/
 class State2 : public State {
+protected:
+    UserLED* uLED; //< Object-Reference from UserLED to set LED's
+    Motor* uMot; //< Object-Reference from Motor to set Motor-States
+    UserButton* uBut; //< Object-Reference from UserButton to get Button-Values
+    Counter* uCnt; //< Object-Reference from Counter to get Count-Values
+    volatile int* currCntVal; //< Current Counter Value: Volatile Integer pointing to a Return-Value
+    int strdCnt; //< Stored Counter Value
 public:
-    State2();
+    /**
+     * @brief Override for Base-Class: State
+     * 
+     */
+    State2(UserLED* led, Motor* mot, UserButton* but, Counter* cnt);
     /**
      * @brief Override for Base-Class: State
      * 
@@ -85,8 +106,19 @@ public:
 
 /*Störung*/
 class State3 : public State {
+protected:
+    UserLED* uLED; //< Object-Reference from UserLED to set LED's
+    Motor* uMot; //< Object-Reference from Motor to set Motor-States
+    UserButton* uBut; //< Object-Reference from UserButton to get Button-Values
+    Counter* uCnt; //< Object-Reference from Counter to get Count-Values
+    volatile int* currCntVal; //< Current Counter Value: Volatile Integer pointing to a Return-Value
+    int strdCnt; //< Stored Counter Value
 public:
-    State3();
+    /**
+     * @brief Override for Base-Class: State
+     * 
+     */
+    State3(UserLED* led, Motor* mot, UserButton* but, Counter* cnt);
     /**
      * @brief Override for Base-Class: State
      * 

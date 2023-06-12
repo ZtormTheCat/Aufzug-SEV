@@ -7,14 +7,13 @@
 
 using namespace Def;
 
-State::State(UserLED* led, Motor* mot, UserButton* but, Counter* cnt):
+State0::State0(UserLED* led, Motor* mot, UserButton* but, Counter* cnt):
             uLED(led),
             uMot(mot),
             uBut(but),
             uCnt(cnt),
             currCntVal((volatile int*)cnt->GetValue())
-{}
-
+{};
 void State0::performStateLogic()
 {
     uLED->SetValue((uint8_t)*currCntVal);
@@ -25,19 +24,26 @@ State* State0::transitionToNextState()
 {
     if (*currCntVal>strdCnt && uBut->Pressed()=='B'){
         strdCnt = *currCntVal;
-        return new State1();
+        return new State1(this->uLED, this->uMot, this->uBut, this->uCnt);
     }
     else if(*currCntVal<strdCnt && uBut->Pressed()=='B'){
         strdCnt = *currCntVal;
-        return new State2();
+        return new State2(this->uLED, this->uMot, this->uBut, this->uCnt);
     }
 
     if (uBut->Pressed()=='X'){
-        return new State3();
+        return new State3(this->uLED, this->uMot, this->uBut, this->uCnt);
     }
 }
 
 /*Nach oben*/
+State1::State1(UserLED* led, Motor* mot, UserButton* but, Counter* cnt):
+            uLED(led),
+            uMot(mot),
+            uBut(but),
+            uCnt(cnt),
+            currCntVal((volatile int*)cnt->GetValue())
+{};
 void State1::performStateLogic()
 {
     uLED->SetValue(Bin5);
@@ -47,13 +53,20 @@ void State1::performStateLogic()
 State* State1::transitionToNextState()
 {
     if(uBut->Pressed()== 'S'){
-        return new State0();
+        return new State0(this->uLED, this->uMot, this->uBut, this->uCnt);
     }
     if (uBut->Pressed()=='X'){
-        return new State3();
+        return new State3(this->uLED, this->uMot, this->uBut, this->uCnt);
     }
 }
 /*Nach Unten*/
+State2::State2(UserLED* led, Motor* mot, UserButton* but, Counter* cnt):
+            uLED(led),
+            uMot(mot),
+            uBut(but),
+            uCnt(cnt),
+            currCntVal((volatile int*)cnt->GetValue())
+{};
 void State2::performStateLogic()
 {
     uLED->SetValue(Bin6);
@@ -63,13 +76,20 @@ void State2::performStateLogic()
 State* State2::transitionToNextState()
 {
     if(uBut->Pressed()== 'S'){
-        return new State0();
+        return new State0(this->uLED, this->uMot, this->uBut, this->uCnt);
     }
     if (uBut->Pressed()=='X'){
-        return new State3();
+        return new State3(this->uLED, this->uMot, this->uBut, this->uCnt);
     }
 }
 /*Störung*/
+State3::State3(UserLED* led, Motor* mot, UserButton* but, Counter* cnt):
+            uLED(led),
+            uMot(mot),
+            uBut(but),
+            uCnt(cnt),
+            currCntVal((volatile int*)cnt->GetValue())
+{};
 void State3::performStateLogic()
 {
     uLED->SetValue(Bin7);
@@ -79,10 +99,10 @@ void State3::performStateLogic()
 State* State3::transitionToNextState()
 {
     if (uBut->Pressed()=='X'){
-        return new State0();
+        return new State0(this->uLED, this->uMot, this->uBut, this->uCnt);
     }
 }
-
+/*
 int startStateMachine() {
     State* currentState = new State0();
 
@@ -103,3 +123,4 @@ int startStateMachine() {
 
     return 0;
 }
+*/
