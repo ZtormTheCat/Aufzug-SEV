@@ -13,7 +13,7 @@ using namespace std;
 
 int main()
 {
-  UserLED* uLed = new UserLED(Def::enumPort::PortA);
+  UserLED* uLed = new UserLED();
   UserButton* uBut = new UserButton();
   Counter* uCnt = new Counter();
   Motor* uMot = new Motor();
