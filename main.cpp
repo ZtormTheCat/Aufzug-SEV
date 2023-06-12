@@ -20,19 +20,26 @@ int main()
   State* currentState = new State0(uHMI, uMot, uCnt);
 
   while(1){
-    currentState->performStateLogic();
-        State* nextState = currentState->transitionToNextState();
+    try{
+      currentState->performStateLogic();
+      State* nextState = currentState->transitionToNextState();
+
+      if (nextState == nullptr) { // Do not override currentState, if transit-conditions are not met.
+        continue;
+      }
         
+      delete currentState; // Delete the current state object
         
-        
-        // Break the loop if nextState is nullptr (termination condition)
-        if (nextState == nullptr) {
-          continue;
-        }
-        
-        // Delete the current state object
-        delete currentState;
-        
-        currentState = nextState;
+      currentState = nextState;
+    }
+    catch(exception& e){
+      cout << to_string(e) << endl;
+      break;
+    }
   }
+
+  delete uHMI;
+  delete uCnt;
+  delete uMot;
+  delete currentState;
 }

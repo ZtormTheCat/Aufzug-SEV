@@ -13,31 +13,29 @@
  */
 class State {
 public:
-/**
- * @brief Construct a new State:: State object
- * 
- * @param led Object of an exsiting UserLED-Instance
- * @param mot Object of an exsiting Motor-Instance
- * @param but Object of an exsiting UserButton-Instance
- * @param cnt Object of an exsiting Counter-Instance
- */
     /**
      * @brief Executes State-Behavior
      * 
      */
     virtual void performStateLogic() = 0;
     /**
-     * @brief Condition-Check to transit to next State
+     * @brief Condition-Check to transit to next State. If conditions are not met, returns nullptr.
      * 
-     * @return State* 
+     * @return State* || nullptr
      */
     virtual State* transitionToNextState() = 0;
 };
 
-/*Stillstand*/
+/**
+ * @brief Constructs a new State object. For this instance State0 (Stillstand)
+ * 
+ * @param hmi Object of an exsiting UserLED-Instance
+ * @param mot Object of an exsiting Motor-Instance
+ * @param cnt Object of an exsiting ModCounter-Instance
+ */
 class State0 : public State {
     protected:
-    HMI* uHMI;
+    HMI* uHMI;  //< Object-Reference from HMI to Controll LED's and get Userinputs
     Motor* uMot; //< Object-Reference from Motor to set Motor-States
     ModCounter* uCnt; //< Object-Reference from Counter to get Count-Values
     int currCntVal; //< Current Counter Value: Volatile Integer pointing to a Return-Value
@@ -56,10 +54,16 @@ public:
     State* transitionToNextState() override;
 };
 
-/*Nach oben*/
+/**
+ * @brief Constructs a new State object. For this instance State1 (Nach-oben)
+ * 
+ * @param hmi Object of an exsiting UserLED-Instance
+ * @param mot Object of an exsiting Motor-Instance
+ * @param cnt Object of an exsiting ModCounter-Instance
+ */
 class State1 : public State {
 protected:
-    HMI* uHMI;
+    HMI* uHMI; //< Object-Reference from HMI to Controll LED's and get Userinputs
     Motor* uMot; //< Object-Reference from Motor to set Motor-States
     ModCounter* uCnt; //< Object-Reference from Counter to get Count-Values
     volatile int* currCntVal; //< Current Counter Value: Volatile Integer pointing to a Return-Value
@@ -82,10 +86,16 @@ public:
     State* transitionToNextState() override;
 };
 
-/*Nach Unten*/
+/**
+ * @brief Constructs a new State object. For this instance State2 (nach unten)
+ * 
+ * @param hmi Object of an exsiting UserLED-Instance
+ * @param mot Object of an exsiting Motor-Instance
+ * @param cnt Object of an exsiting ModCounter-Instance
+ */
 class State2 : public State {
 protected:
-    HMI* uHMI;
+    HMI* uHMI; //< Object-Reference from HMI to Controll LED's and get Userinputs
     Motor* uMot; //< Object-Reference from Motor to set Motor-States
     ModCounter* uCnt; //< Object-Reference from Counter to get Count-Values
     volatile int* currCntVal; //< Current Counter Value: Volatile Integer pointing to a Return-Value
@@ -108,10 +118,16 @@ public:
     State* transitionToNextState() override;
 };
 
-/*Störung*/
+/**
+ * @brief Constructs a new State object. For this instance State3 (Störung)
+ * 
+ * @param hmi Object of an exsiting UserLED-Instance
+ * @param mot Object of an exsiting Motor-Instance
+ * @param cnt Object of an exsiting ModCounter-Instance
+ */
 class State3 : public State {
 protected:
-    HMI* uHMI;
+    HMI* uHMI; //< Object-Reference from HMI to Controll LED's and get Userinputs
     Motor* uMot; //< Object-Reference from Motor to set Motor-States
     ModCounter* uCnt; //< Object-Reference from Counter to get Count-Values
     volatile int* currCntVal; //< Current Counter Value: Volatile Integer pointing to a Return-Value
