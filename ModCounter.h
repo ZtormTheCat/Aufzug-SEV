@@ -9,7 +9,7 @@ private:
   int modVal;
   
 public:
-  ModCounter(int _modVal = 2) : modVal(_modVal) {}
+  ModCounter(int _modVal = 4) : modVal(_modVal) {}
   
   void Inc() {count = (count + 1)%modVal;}
 

@@ -31,32 +31,30 @@ public:
   * @return The user input char
   */
   char getUserInput(){
-    while(1){
-      std::string input = "";
-      if(Def::op_mode::enable == 0){
-        std::cin >> input;
-      };
-      if(input == "X" || input == "x" || ButtonControl.Pressed() == 'X')
-      {
-        printMessage("Error");
-        return('X');
-      }
-      else if(input == "B" || ButtonControl.Pressed() == 'B'){
-        printMessage("Start");
-        return('B');
-      }
-      else if(input == "F" || ButtonControl.Pressed() == 'F'){
-        printMessage("Select");
-        return('F');
-      }
-      else if (input == "S" || ButtonControl.Pressed() == 'S'){
-        printMessage("Sensor");
-        return('S');
-      }
+    std::string input = "";
+    if(Def::op_mode::enable == 0){
+      std::cin >> input;
+    };
+    if(input == "X" || input == "x" || ButtonControl.Pressed() == 'X')
+    {
+      printMessage("Error");
+      return('X');
     }
+    else if(input == "B" || ButtonControl.Pressed() == 'B'){
+      printMessage("Start");
+      return('B');
     }
+    else if(input == "F" || ButtonControl.Pressed() == 'F'){
+      printMessage("Select");
+      return('F');
+    }
+    else if (input == "S" || ButtonControl.Pressed() == 'S'){
+      printMessage("Sensor");
+      return('S');
+    } 
+  }
     
-  void controlLED(uint8_t value) {
+  void controlLED(int value) {
     LEDControl.SetValue(value);
   };
 };

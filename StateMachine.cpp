@@ -3,103 +3,116 @@
 #include "Motor.h"
 #include "UserLED.h"
 #include "UserButton.h"
-#include "Counter.h"
+#include "ModCounter.h"
+#include "HMI.h"
 
 using namespace Def;
 
-State0::State0(UserLED* led, Motor* mot, UserButton* but, Counter* cnt):
-            uLED(led),
+State0::State0(HMI* hmi, Motor* mot, ModCounter* cnt):
+            uHMI(hmi),
             uMot(mot),
-            uBut(but),
             uCnt(cnt),
-            currCntVal((volatile int*)cnt->GetValue())
+            strdCnt(cnt->GetValue()),
+            currCntVal(cnt->GetValue())
 {};
 void State0::performStateLogic()
 {
-    uLED->SetValue((uint8_t)*currCntVal);
+  uHMI->printMessage(std::to_string(currCntVal));
+    if(uHMI->getUserInput()=='F'){
+          uCnt->Inc();
+          currCntVal = uCnt->GetValue();
+    }
+    uHMI->controlLED(currCntVal);
     uMot->setMotorState((uint8_t)Still);
 };
 
 State* State0::transitionToNextState()
 {
-    if (*currCntVal>strdCnt && uBut->Pressed()=='B'){
-        strdCnt = *currCntVal;
-        return new State1(this->uLED, this->uMot, this->uBut, this->uCnt);
+    if (uHMI->getUserInput()=='X'){
+        return new State3(this->uHMI, this->uMot, this->uCnt);
     }
-    else if(*currCntVal<strdCnt && uBut->Pressed()=='B'){
-        strdCnt = *currCntVal;
-        return new State2(this->uLED, this->uMot, this->uBut, this->uCnt);
+    
+    if (currCntVal>strdCnt && uHMI->getUserInput()=='B'){
+        strdCnt = currCntVal;
+        return new State1(this->uHMI, this->uMot, this->uCnt);
     }
-
-    if (uBut->Pressed()=='X'){
-        return new State3(this->uLED, this->uMot, this->uBut, this->uCnt);
+    else if(currCntVal<strdCnt && uHMI->getUserInput()=='B'){
+        strdCnt = currCntVal;
+        return new State2(this->uHMI, this->uMot, this->uCnt);
+    }
+    else {
+      return nullptr;
     }
 }
 
 /*Nach oben*/
-State1::State1(UserLED* led, Motor* mot, UserButton* but, Counter* cnt):
-            uLED(led),
+State1::State1(HMI* hmi, Motor* mot, ModCounter* cnt):
+            uHMI(hmi),
             uMot(mot),
-            uBut(but),
-            uCnt(cnt),
-            currCntVal((volatile int*)cnt->GetValue())
+            uCnt(cnt)
 {};
 void State1::performStateLogic()
 {
-    uLED->SetValue(Bin5);
+    uHMI->controlLED(Bin5);
     uMot->setMotorState(Rauf);
 }
 
 State* State1::transitionToNextState()
 {
-    if(uBut->Pressed()== 'S'){
-        return new State0(this->uLED, this->uMot, this->uBut, this->uCnt);
+    if (uHMI->getUserInput()=='X'){
+        return new State3(this->uHMI, this->uMot, this->uCnt);
     }
-    if (uBut->Pressed()=='X'){
-        return new State3(this->uLED, this->uMot, this->uBut, this->uCnt);
+    if(uHMI->getUserInput()== 'S'){
+        return new State0(this->uHMI, this->uMot, this->uCnt);
+    }
+    else{
+      return nullptr;
     }
 }
 /*Nach Unten*/
-State2::State2(UserLED* led, Motor* mot, UserButton* but, Counter* cnt):
-            uLED(led),
+State2::State2(HMI* hmi, Motor* mot, ModCounter* cnt):
+            uHMI(hmi),
             uMot(mot),
-            uBut(but),
-            uCnt(cnt),
-            currCntVal((volatile int*)cnt->GetValue())
-{};
+            uCnt(cnt)
+{}
 void State2::performStateLogic()
 {
-    uLED->SetValue(Bin6);
-    uMot->setMotorState(0b0110);
+    uHMI->controlLED(Bin6);
+    uMot->setMotorState(Runter);
 }
 
 State* State2::transitionToNextState()
 {
-    if(uBut->Pressed()== 'S'){
-        return new State0(this->uLED, this->uMot, this->uBut, this->uCnt);
+    if (uHMI->getUserInput()=='X'){
+        return new State3(this->uHMI, this->uMot, this->uCnt);
     }
-    if (uBut->Pressed()=='X'){
-        return new State3(this->uLED, this->uMot, this->uBut, this->uCnt);
+    if(uHMI->getUserInput()== 'S'){
+        return new State0(this->uHMI, this->uMot, this->uCnt);
     }
+    else{
+        return nullptr;
+    }
+    
 }
 /*Störung*/
-State3::State3(UserLED* led, Motor* mot, UserButton* but, Counter* cnt):
-            uLED(led),
+State3::State3(HMI* hmi, Motor* mot, ModCounter* cnt):
+            uHMI(hmi),
             uMot(mot),
-            uBut(but),
-            uCnt(cnt),
-            currCntVal((volatile int*)cnt->GetValue())
+            uCnt(cnt)
 {};
 void State3::performStateLogic()
 {
-    uLED->SetValue(Bin7);
+    uHMI->controlLED(Bin7);
     uMot->setMotorState(Still);
 }
 
 State* State3::transitionToNextState()
 {
-    if (uBut->Pressed()=='X'){
-        return new State0(this->uLED, this->uMot, this->uBut, this->uCnt);
+    if (uHMI->getUserInput()=='X'){
+        return new State0(this->uHMI, this->uMot, this->uCnt);
+    }
+    else{
+        return nullptr;
     }
 }
 /*

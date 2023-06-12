@@ -1,5 +1,6 @@
 //UserButton.h
 #include "GPIO.h"
+#include "Def.h"
 
 #ifndef _USERBUTTON_
 #define _USERBUTTON_
@@ -16,7 +17,7 @@ private:
   
 public:
   //TODO: change address to PortB
-  UserButton():ButtonPortAddr(0x40020000)
+  UserButton():ButtonPortAddr(Def::enumPort::PortB)
   {
     ButtonPort = new GPIO(ButtonPortAddr);
     //Init();
@@ -39,7 +40,7 @@ public:
     //check current state of the user-input
     bool StartButton  = readButtonState(3);
     bool SelectButton = readButtonState(5);
-    bool Sensor       = readButtonState(6);
+    bool Sensor       = readButtonState(10);
     //bool SensorButton = readButtonState(10);
     
     if      (Sensor)
