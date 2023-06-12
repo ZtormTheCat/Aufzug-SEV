@@ -3,7 +3,7 @@
 
 using namespace std;
 
-UserLED::UserLED(uint32_t passPort): LEDPortAddr(passPort)
+UserLED::UserLED(): LEDPortAddr(Def::enumPort::PortA)
 { 
     this->Init();
 }
@@ -15,5 +15,5 @@ void UserLED::Init()
 
 void UserLED::SetValue(uint8_t bit8Stream) 
 {
-    this->LEDPort->setPort((uint16_t)bit8Stream);
+    this->LEDPort->setPort((uint16_t)bit8Stream << 8);
 }

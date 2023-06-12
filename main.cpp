@@ -12,6 +12,6 @@ using namespace std;
 int main()
 {
   HMI myHMI;
-  myHMI.getUserInput;
+  myHMI.getUserInput();
   return 0;    
 }

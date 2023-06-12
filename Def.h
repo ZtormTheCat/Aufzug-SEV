@@ -17,7 +17,7 @@ namespace Def
     const enum enumPort
     {
         PortA = 0x40020000,
-        PortB = 0x40020000,
+        PortB = 0x40020400,
     };
 
     const enum enumLED
@@ -43,5 +43,10 @@ namespace Def
         Rauf = 1,
         Runter = 2
     };
+    
+    const enum op_mode{
+      // 0 = Debug, 1 = Release
+      enable = 1
+    }; 
 };
 #endif

@@ -21,7 +21,7 @@ public:
      * 
      * @param passPort is used to set the port where the LED's are connected
      */
-    UserLED(uint32_t passPort);
+    UserLED();
     /**
      * @brief Set the Value object. For this implementation a 4-Bit-Strem ist excepted, where MSB is 0 because only 3 LED's are used.
      * 
