@@ -37,11 +37,14 @@ public:
   char Pressed()
   {
     //check current state of the user-input
-    bool StartButton  = readButtonState(9); //TODO: change to needed pin number
-    bool SelectButton = readButtonState(10); //TODO: change to needed pin number
+    bool StartButton  = readButtonState(3);
+    bool SelectButton = readButtonState(5);
+    bool Sensor       = readButtonState(6);
     //bool SensorButton = readButtonState(10);
     
-    if      (StartButton && SelectButton)
+    if      (Sensor)
+      return 'S';
+    else if (StartButton && SelectButton)
       return 'X';
     else if (StartButton && !SelectButton)
       return 'B';
