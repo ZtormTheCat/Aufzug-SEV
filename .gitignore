@@ -1,2 +1,3 @@
 .gitignore
+*.log
 GPIO_CPP.*
