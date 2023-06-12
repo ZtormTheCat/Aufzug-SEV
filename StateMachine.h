@@ -37,6 +37,9 @@ public:
 
 /*Stillstand*/
 class State0 : public State {
+protected:
+  uint8_t currentFloor;
+  
 public:
     State0();
     /**
