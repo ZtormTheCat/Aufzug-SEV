@@ -1,9 +1,3 @@
 .gitignore
-Counter.h
 GPIO_CPP.*
-GPIO.h
-HMI.h
-HMI.h
-ModCounter.h
-Motor.*
-UserButton.h
+
