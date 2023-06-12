@@ -1,3 +1,5 @@
 .gitignore
+settings/
+Debug/
+*.log
 GPIO_CPP.*
-

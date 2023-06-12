@@ -1,1 +1,0 @@
-﻿"C:\Users\domin\OneDrive\Dokumente\Embedded Workbench Projects\GPIO_CPP\StateMachine.cpp" -o "C:\Users\domin\OneDrive\Dokumente\Embedded Workbench Projects\GPIO_CPP\Debug\Obj\\" --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --libc++ -Ol --c++ --no_exceptions --no_rtti
