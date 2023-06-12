@@ -3,7 +3,7 @@
 
 using namespace std;
 
-UserLED::UserLED(uint32_t passPort): LEDPortAddr(passPort), setPortStream(0)
+UserLED::UserLED(): LEDPortAddr(0x40020000), setPortStream(0)
 { 
     this->Init();
 }

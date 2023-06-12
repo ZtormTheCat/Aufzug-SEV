@@ -37,10 +37,12 @@ void State0::performStateLogic()
 
 State* State0::transitionToNextState()
 {
-    if nach_oben:
-        return new State1();
-    if störung:
-        return new State3();
+    if (wurde Start gedrückt? && currentFloor < ausgewähleFloor )
+        return new State1(); //fahre hoch
+    else if (wurde Start gedrückt? && currentFloor > ausgewähleFloor)
+        return new State2(); //fahre runter
+    else if (wurden Start und Select gleichzeitig gedrückt?)
+        return new State3(); //Störung
 }
 
 /*Nach oben*/

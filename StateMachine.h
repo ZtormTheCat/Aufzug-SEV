@@ -1,23 +1,24 @@
 #include "Motor.h"
+#include "ModCounter.h"
 
 class State {
 protected:
-    volatile const uint8_t* currCntVal;
-    volatile const uint8_t* strdCntVal;
-    Motor *MotorLED;
-    void Init();
+    State *nextState;
 public:
-    State(uint8_t currCnt, uint8_t strdCnt);
+    State();
     virtual void performStateLogic() = 0;
     virtual State* transitionToNextState() = 0;
 };
 
 /*Stillstand*/
 class State0 : public State {
+protected:
+  uint8_t currentFloor;
+  
 public:
-    State0(uint8_t currCnt, uint8_t strdCnt);
-    void performStateLogic() override;
-    State* transitionToNextState() override;
+  State0(ModCounter* modCounter) : currentFloor(modCounter->GetValue()) {};
+  void performStateLogic() override;
+  State* transitionToNextState() override;
 };
 
 /*Nach oben*/

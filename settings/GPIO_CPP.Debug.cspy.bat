@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\Program Files\IAR Systems\Embedded Workbench 9.1\common\bin\cspybat" -f "C:\Users\timgo\Downloads\GPIO_CPP_290523\GPIO_CPP\settings\GPIO_CPP.Debug.general.xcl" --backend -f "C:\Users\timgo\Downloads\GPIO_CPP_290523\GPIO_CPP\settings\GPIO_CPP.Debug.driver.xcl" 
+"C:\Program Files\IAR Systems\Embedded Workbench 9.1\common\bin\cspybat" -f "C:\Users\domin\OneDrive\Dokumente\Git Repositories\Aufzug-SEV\settings\GPIO_CPP.Debug.general.xcl" --backend -f "C:\Users\domin\OneDrive\Dokumente\Git Repositories\Aufzug-SEV\settings\GPIO_CPP.Debug.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\Program Files\IAR Systems\Embedded Workbench 9.1\common\bin\cspybat" -f "C:\Users\timgo\Downloads\GPIO_CPP_290523\GPIO_CPP\settings\GPIO_CPP.Debug.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\timgo\Downloads\GPIO_CPP_290523\GPIO_CPP\settings\GPIO_CPP.Debug.driver.xcl" 
+"C:\Program Files\IAR Systems\Embedded Workbench 9.1\common\bin\cspybat" -f "C:\Users\domin\OneDrive\Dokumente\Git Repositories\Aufzug-SEV\settings\GPIO_CPP.Debug.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\domin\OneDrive\Dokumente\Git Repositories\Aufzug-SEV\settings\GPIO_CPP.Debug.driver.xcl" 
 
 @echo off 
 :end

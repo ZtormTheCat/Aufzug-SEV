@@ -12,7 +12,7 @@ private:
     void Init();
 
 public:
-    UserLED(uint32_t passPort);
+    UserLED();
     //~UserLED();
     void SetValue(uint8_t bit8Stream);
 };
