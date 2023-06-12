@@ -1,17 +1,22 @@
-#include <iostream>
-#include "UserLED.h"
-
-using namespace std;
-
 #ifndef _MOTOR_
 #define _MOTOR_
+/**
+ * @brief Plain Motor-Class. It only prints to terminal.
+ * 
+ */
 class Motor
 {
-private:
-    UserLED *DispLED;
-
 public:
+    /**
+     * @brief Construct a new Motor object
+     * 
+     */
     Motor();
+    /**
+     * @brief Set the Motor State object and prints the corrisponding text to the Terminal
+     * 
+     * @param motorState 
+     */
     void setMotorState(uint8_t motorState);
 };
 #endif

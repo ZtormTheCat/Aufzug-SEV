@@ -1,9 +1,9 @@
-//UserLED.cpp
+#include "GPIO.h"
 #include "UserLED.h"
 
 using namespace std;
 
-UserLED::UserLED(): LEDPortAddr(0x40020000), setPortStream(0)
+UserLED::UserLED(uint32_t passPort): LEDPortAddr(passPort)
 { 
     this->Init();
 }
@@ -13,13 +13,7 @@ void UserLED::Init()
     this->LEDPort->configurePort(0xFFFF);
 }
 
-/*
-Expects 4-Bit integer, passes Port a 16-Bit-Stream.
-*/
 void UserLED::SetValue(uint8_t bit8Stream) 
 {
-    setPortStream = 0;
-    setPortStream = (uint16_t)bit8Stream << 8;
-
-    this->LEDPort->setPort(setPortStream);
+    this->LEDPort->setPort((uint16_t)bit8Stream);
 }
