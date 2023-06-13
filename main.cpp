@@ -31,4 +31,5 @@ int main()
     delete currentState; // Delete the current state object
       
     currentState = nextState;
+  }
 }
