@@ -16,6 +16,7 @@ public:
      * @brief Set the Motor State object and prints the corrisponding text to the Terminal
      * 
      * @param motorState 
+     * @return Nothing
      */
     void setMotorState(uint8_t motorState);
 };
