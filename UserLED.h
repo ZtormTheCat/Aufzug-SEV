@@ -22,7 +22,7 @@ public:
     UserLED();
     /**
      * @brief Set the Value object. For this implementation a 4-Bit-Strem ist excepted, where MSB is 0 because only 3 LED's are used.
-     * @param bit8Stream //< gets cast into a uint16_t to fit the GPIO param exception
+     * @param bit8Stream gets cast into a uint16_t to fit the GPIO param exception
      */
     void SetValue(uint8_t bit8Stream);
 };
