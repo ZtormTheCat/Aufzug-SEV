@@ -6,7 +6,7 @@
 #define _GPIO_
 
 /**
-* Class to directly control the GPIO Ports and Pins
+* @brief Class to directly control the GPIO Ports and Pins
 */
 class GPIO
 {
@@ -43,7 +43,7 @@ public:
   }
   
   /**
-  * 
+  * @brief Configurates a Pin on the GPIO-Port by the given configuration values
   * @param pin The pin to be configured
   * @param mode 0 for Input, 1 for Output
   * @param outputType 0 for Push-Pull, 1 for Open-Drain
@@ -72,7 +72,7 @@ public:
     }
 
     /**
-    * Sets each pin of the port to either input or output
+    * @brief Sets each pin of the port to either input or output
     * Other Settings are: Push-Pull, 2MHz low speed, no Pull-Up/Pull-Down
     * @param mask The mask to set the individual pins, 0 for input, 1 for Output
     */
@@ -97,7 +97,7 @@ public:
     }
     
     /**
-    * Sets the desired Output Pin to High
+    * @brief Sets the desired Output Pin to High
     * @param pin The Pin to be set
     */
    void setPin(uint16_t pin) {
@@ -105,7 +105,7 @@ public:
     }
     
     /**
-    * Sets the desired output Pin to low
+    * @brief Sets the desired output Pin to low
     * @param pin The Pin to be reset
     */
     void resetPin(uint16_t pin) {
@@ -113,7 +113,7 @@ public:
     }
     
     /**
-    * Toggles the desired Output Pin
+    * @brief Toggles the desired Output Pin
     * @param pin The Pin to be toggled
     */
     void togglePin(uint16_t pin) {
@@ -121,7 +121,7 @@ public:
     }
 
     /**
-    * Sets multiple Output Pins at once, depending on the mask
+    * @brief Sets multiple Output Pins at once, depending on the mask
     * @param mask Mask to select which Pins to set
     */
     void setPort(uint16_t mask){
@@ -129,7 +129,7 @@ public:
     }
     
     /**
-    * Get the states of all inputs of a specific port
+    * @brief Get the states of all inputs of a specific port
     * @return The currently active inputs 
     */
     uint16_t getPort(){
