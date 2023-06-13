@@ -21,7 +21,6 @@ public:
     /**
      * @brief Construct a new User LED object.
      * 
-     * @param passPort is used to set the port where the LED's are connected
      */
     UserLED();
     /**
