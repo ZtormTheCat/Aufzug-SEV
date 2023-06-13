@@ -7,7 +7,7 @@
 class Counter
 {
 protected:
-  int count; //< attribute to store the current counter value
+  int count; /**< attribute to store the current counter value */
     
 public:
   /**

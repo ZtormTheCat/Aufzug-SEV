@@ -8,8 +8,8 @@
 class UserLED
 {
 private:
-    const uint32_t LEDPortAddr; //< Is initialized by passPort
-    GPIO *LEDPort;  //< Reference to a GPIO-Class
+    const uint32_t LEDPortAddr; /**< Is initialized by passPort */
+    GPIO *LEDPort;  /**< Reference to a GPIO-Class */
     /**
      * @brief Creates a GPIO-Object and configures the port to an Output-Port
      */

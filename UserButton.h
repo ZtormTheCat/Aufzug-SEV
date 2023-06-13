@@ -10,8 +10,8 @@
 class UserButton
 {
 private:
-  unsigned long ButtonPortAddr; //< Is the port-adress of the button port
-  GPIO *ButtonPort; //< Reference to GPIO-Class
+  unsigned long ButtonPortAddr; /**< Is the port-adress of the button port */
+  GPIO *ButtonPort; /**< Reference to GPIO-Class */
 
   /**
   * @brief Creates a GPIO-Object and configures the port to an input-port

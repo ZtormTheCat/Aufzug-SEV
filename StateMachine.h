@@ -35,11 +35,11 @@ public:
  */
 class State0 : public State {
     protected:
-    HMI* uHMI;  //< Object-Reference from HMI to Controll LED's and get Userinputs
-    Motor* uMot; //< Object-Reference from Motor to set Motor-States
-    ModCounter* uCnt; //< Object-Reference from Counter to get Count-Values
-    int currCntVal; //< Current Counter Value: Volatile Integer pointing to a Return-Value
-    int strdCnt; //< Stored Counter Value
+    HMI* uHMI;  /**< Object-Reference from HMI to Controll LED's and get Userinputs */
+    Motor* uMot; /**< Object-Reference from Motor to set Motor-States */
+    ModCounter* uCnt; /**< Object-Reference from Counter to get Count-Values */
+    int currCntVal; /**< Current Counter Value: Volatile Integer pointing to a Return-Value */
+    int strdCnt; /**< Stored Counter Value */
 public:
     /**
      * @brief Override for Base-Class: State
@@ -63,11 +63,11 @@ public:
  */
 class State1 : public State {
 protected:
-    HMI* uHMI; //< Object-Reference from HMI to Controll LED's and get Userinputs
-    Motor* uMot; //< Object-Reference from Motor to set Motor-States
-    ModCounter* uCnt; //< Object-Reference from Counter to get Count-Values
-    volatile int* currCntVal; //< Current Counter Value: Volatile Integer pointing to a Return-Value
-    int strdCnt; //< Stored Counter Value
+    HMI* uHMI; /**< Object-Reference from HMI to Controll LED's and get Userinputs */
+    Motor* uMot; /**< Object-Reference from Motor to set Motor-States */
+    ModCounter* uCnt; /**< Object-Reference from Counter to get Count-Values */
+    volatile int* currCntVal; /**< Current Counter Value: Volatile Integer pointing to a Return-Value */
+    int strdCnt; /**< Stored Counter Value */
 public:
     /**
      * @brief Override for Base-Class: State
@@ -95,11 +95,11 @@ public:
  */
 class State2 : public State {
 protected:
-    HMI* uHMI; //< Object-Reference from HMI to Controll LED's and get Userinputs
-    Motor* uMot; //< Object-Reference from Motor to set Motor-States
-    ModCounter* uCnt; //< Object-Reference from Counter to get Count-Values
-    volatile int* currCntVal; //< Current Counter Value: Volatile Integer pointing to a Return-Value
-    int strdCnt; //< Stored Counter Value
+    HMI* uHMI; /**< Object-Reference from HMI to Controll LED's and get Userinputs */
+    Motor* uMot; /**< Object-Reference from Motor to set Motor-States */
+    ModCounter* uCnt; /**< Object-Reference from Counter to get Count-Values */
+    volatile int* currCntVal; /**< Current Counter Value: Volatile Integer pointing to a Return-Value */
+    int strdCnt; /**< Stored Counter Value
 public:
     /**
      * @brief Override for Base-Class: State
@@ -127,11 +127,11 @@ public:
  */
 class State3 : public State {
 protected:
-    HMI* uHMI; //< Object-Reference from HMI to Controll LED's and get Userinputs
-    Motor* uMot; //< Object-Reference from Motor to set Motor-States
-    ModCounter* uCnt; //< Object-Reference from Counter to get Count-Values
-    volatile int* currCntVal; //< Current Counter Value: Volatile Integer pointing to a Return-Value
-    int strdCnt; //< Stored Counter Value
+    HMI* uHMI; /**< Object-Reference from HMI to Controll LED's and get Userinputs */
+    Motor* uMot; /**< Object-Reference from Motor to set Motor-States */
+    ModCounter* uCnt; /**< Object-Reference from Counter to get Count-Values */
+    volatile int* currCntVal; /**< Current Counter Value: Volatile Integer pointing to a Return-Value */
+    int strdCnt; /**< Stored Counter Value */
 public:
     /**
      * @brief Override for Base-Class: State

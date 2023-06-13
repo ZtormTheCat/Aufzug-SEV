@@ -14,9 +14,8 @@ class HMI
 {
   private:
     
-    UserButton ButtonControl = UserButton();
-    UserLED LEDControl = UserLED();
-    //UserLED LEDControl();
+    UserButton ButtonControl = UserButton(); /**< Reference to UserButton-Class*/
+    UserLED LEDControl = UserLED(); /**<  Reference to UserLED-Class*/
 public:
   /**
   * @brief Print desired message to console
@@ -53,7 +52,11 @@ public:
       return('S');
     } 
   }
-    
+
+  /**
+  * @brief sets the LEDs with the given mask in value
+  * @param value a mask where the 3 LSB show the 3 LED states
+  */  
   void controlLED(int value) {
     LEDControl.SetValue(value);
   };

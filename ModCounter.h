@@ -9,7 +9,7 @@
 class ModCounter : public Counter
 {
 private:
-  int modVal; //< the number which is used to module divide the count value
+  int modVal; /**< the number which is used to module divide the count value */
   
 public:
   /**
