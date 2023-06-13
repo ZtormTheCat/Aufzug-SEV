@@ -1,3 +1,6 @@
+/*
+    Author: Tim Göhringer
+*/
 #include "UserLED.h"
 #include "UserButton.h"
 #include "Def.h"
@@ -13,7 +16,7 @@
 class HMI
 {
   private:
-    
+
     UserButton ButtonControl = UserButton(); /**< Reference to UserButton-Class*/
     UserLED LEDControl = UserLED(); /**<  Reference to UserLED-Class*/
 public:
@@ -24,7 +27,7 @@ public:
   void printMessage(std::string message){
       std::cout << message << std::endl;
     }
-    
+
   /**
   * @brief Get the user input from either keyboard or HW Buttons
   * @return The user input char
@@ -50,13 +53,13 @@ public:
     else if (input == "S" || ButtonControl.Pressed() == 'S'){
       printMessage("Sensor");
       return('S');
-    } 
+    }
   }
 
   /**
   * @brief sets the LEDs with the given mask in value
   * @param value a mask where the 3 LSB show the 3 LED states
-  */  
+  */
   void controlLED(int value) {
     LEDControl.SetValue(value);
   };

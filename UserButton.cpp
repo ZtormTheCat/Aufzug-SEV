@@ -1,3 +1,6 @@
+/*
+    Author: Dominik Podsada
+*/
 #include "UserButton.h"
 
 UserButton::UserButton():ButtonPortAddr(Def::enumPort::PortB)

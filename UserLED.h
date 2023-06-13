@@ -1,3 +1,6 @@
+/*
+    Author: Felix Trautwein
+*/
 #include "GPIO.h"
 
 #ifndef _USERLED_

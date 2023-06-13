@@ -1,5 +1,7 @@
-// Def.h
 /*
+
+Author: Felix Trautwein
+
 Namespace for Standard-Parameters. Usage:
 
 - Preprocessor -
@@ -43,10 +45,10 @@ namespace Def
         Rauf = 1,
         Runter = 2
     };
-    
+
     const enum op_mode{
       // 0 = Debug, 1 = Release
       enable = 1
-    }; 
+    };
 };
 #endif

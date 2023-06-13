@@ -1,3 +1,6 @@
+/*
+    Author: Tim Göhringer
+*/
 #include <stdint.h>
 #include <stdio.h>
 #include "Def.h"
@@ -41,7 +44,7 @@ public:
     // Activate the corresponding Bit
     *RCC_AHB1ENR |= (0x01 << registerNumber);
   }
-  
+
   /**
   * @brief Configurates a Pin on the GPIO-Port by the given configuration values
   * @param pin The pin to be configured
@@ -95,7 +98,7 @@ public:
         }
       }
     }
-    
+
     /**
     * @brief Sets the desired Output Pin to High
     * @param pin The Pin to be set
@@ -103,7 +106,7 @@ public:
    void setPin(uint16_t pin) {
         *GPIOx_BSRRL |= (0x01 << pin);  // Set pin
     }
-    
+
     /**
     * @brief Sets the desired output Pin to low
     * @param pin The Pin to be reset
@@ -111,7 +114,7 @@ public:
     void resetPin(uint16_t pin) {
         *GPIOx_BSRRH |= (0x01 << pin);  // Reset pin
     }
-    
+
     /**
     * @brief Toggles the desired Output Pin
     * @param pin The Pin to be toggled
@@ -127,13 +130,13 @@ public:
     void setPort(uint16_t mask){
       *GPIOx_ODR = mask;
     }
-    
+
     /**
     * @brief Get the states of all inputs of a specific port
-    * @return The currently active inputs 
+    * @return The currently active inputs
     */
     uint16_t getPort(){
-             
+
       return *GPIOx_IDR & 0xFFFF;
     }
 };

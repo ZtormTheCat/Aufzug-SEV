@@ -1,3 +1,6 @@
+/*
+    Author: Everyone
+*/
 #include "StateMachine.h"
 #include "Def.h"
 #include "Motor.h"
@@ -31,7 +34,7 @@ State* State0::transitionToNextState()
     if (uHMI->getUserInput()=='X'){
         return new State3(this->uHMI, this->uMot, this->uCnt);
     }
-    
+
     if (currCntVal>strdCnt && uHMI->getUserInput()=='B'){
         strdCnt = currCntVal;
         return new State1(this->uHMI, this->uMot, this->uCnt);
@@ -92,7 +95,7 @@ State* State2::transitionToNextState()
     else{
         return nullptr;
     }
-    
+
 }
 /*Störung*/
 State3::State3(HMI* hmi, Motor* mot, ModCounter* cnt):
@@ -122,15 +125,15 @@ int startStateMachine() {
     while (true) {
         currentState->performStateLogic();
         State* nextState = currentState->transitionToNextState();
-        
+
         // Delete the current state object
         delete currentState;
-        
+
         // Break the loop if nextState is nullptr (termination condition)
         if (nextState == nullptr) { //TODO: Abbruchbedingung festlegen (optional)
             break;
         }
-        
+
         currentState = nextState;
     }
 

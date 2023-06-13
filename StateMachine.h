@@ -1,3 +1,6 @@
+/*
+    Author: Everyone
+*/
 #include "UserLED.h"
 #include "UserButton.h"
 #include "Motor.h"
@@ -9,18 +12,18 @@
 #define _StateMachine_
 /**
  * @brief Abstract Class as a Template for Elevator-States
- * 
+ *
  */
 class State {
 public:
     /**
      * @brief Executes State-Behavior
-     * 
+     *
      */
     virtual void performStateLogic() = 0;
     /**
      * @brief Condition-Check to transit to next State. If conditions are not met, returns nullptr.
-     * 
+     *
      * @return State* || nullptr
      */
     virtual State* transitionToNextState() = 0;
@@ -28,7 +31,7 @@ public:
 
 /**
  * @brief Constructs a new State object. For this instance State0 (Stillstand)
- * 
+ *
  * @param hmi Object of an exsiting UserLED-Instance
  * @param mot Object of an exsiting Motor-Instance
  * @param cnt Object of an exsiting ModCounter-Instance
@@ -43,20 +46,20 @@ class State0 : public State {
 public:
     /**
      * @brief Override for Base-Class: State
-     * 
+     *
      */
     State0(HMI* hmi, Motor* mot, ModCounter* cnt);
     void performStateLogic() override;
     /**
      * @brief Override for Base-Class: State
-     * 
+     *
      */
     State* transitionToNextState() override;
 };
 
 /**
  * @brief Constructs a new State object. For this instance State1 (Nach-oben)
- * 
+ *
  * @param hmi Object of an exsiting UserLED-Instance
  * @param mot Object of an exsiting Motor-Instance
  * @param cnt Object of an exsiting ModCounter-Instance
@@ -71,24 +74,24 @@ protected:
 public:
     /**
      * @brief Override for Base-Class: State
-     * 
+     *
      */
     State1(HMI* hmi, Motor* mot, ModCounter* cnt);
     /**
      * @brief Override for Base-Class: State
-     * 
+     *
      */
     void performStateLogic() override;
     /**
      * @brief Override for Base-Class: State
-     * 
+     *
      */
     State* transitionToNextState() override;
 };
 
 /**
  * @brief Constructs a new State object. For this instance State2 (nach unten)
- * 
+ *
  * @param hmi Object of an exsiting UserLED-Instance
  * @param mot Object of an exsiting Motor-Instance
  * @param cnt Object of an exsiting ModCounter-Instance
@@ -103,24 +106,24 @@ protected:
 public:
     /**
      * @brief Override for Base-Class: State
-     * 
+     *
      */
     State2(HMI* hmi, Motor* mot, ModCounter* cnt);
     /**
      * @brief Override for Base-Class: State
-     * 
+     *
      */
     void performStateLogic() override;
     /**
      * @brief Override for Base-Class: State
-     * 
+     *
      */
     State* transitionToNextState() override;
 };
 
 /**
  * @brief Constructs a new State object. For this instance State3 (Störung)
- * 
+ *
  * @param hmi Object of an exsiting UserLED-Instance
  * @param mot Object of an exsiting Motor-Instance
  * @param cnt Object of an exsiting ModCounter-Instance
@@ -135,17 +138,17 @@ protected:
 public:
     /**
      * @brief Override for Base-Class: State
-     * 
+     *
      */
     State3(HMI*, Motor* mot, ModCounter* cnt);
     /**
      * @brief Override for Base-Class: State
-     * 
+     *
      */
     void performStateLogic() override;
     /**
      * @brief Override for Base-Class: State
-     * 
+     *
      */
     State* transitionToNextState() override;
 };

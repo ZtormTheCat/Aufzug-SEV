@@ -1,3 +1,6 @@
+/*
+    Author: Max Brehm
+*/
 #ifndef _COUNTER_
 #define _COUNTER_
 
@@ -8,7 +11,7 @@ class Counter
 {
 protected:
   int count; /**< attribute to store the current counter value */
-    
+
 public:
   /**
   * @brief Creates a Counter-Object if no start value is given to the constructor

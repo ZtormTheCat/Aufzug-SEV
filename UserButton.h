@@ -1,3 +1,6 @@
+/*
+    Author: Dominik Podsada
+*/
 #include "GPIO.h"
 #include "Def.h"
 

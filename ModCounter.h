@@ -1,3 +1,6 @@
+/*
+    Author: Max Brehm
+*/
 #include "counter.h"
 
 #ifndef _MODCOUNTER_

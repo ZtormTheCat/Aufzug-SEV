@@ -1,3 +1,6 @@
+/*
+    Author: Max Brehm
+*/
 #include <iostream>
 #include "Motor.h"
 
