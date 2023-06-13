@@ -13,6 +13,16 @@ class UserButton
 private:
   unsigned long ButtonPortAddr; //< Is the port-adress of the button port
   GPIO *ButtonPort; //< Reference to GPIO-Class
+
+  /**
+  * @brief Creates a GPIO-Object and configures the port to an input-port
+  *
+  */
+  void Init()
+  {
+    ButtonPort = new GPIO(ButtonPortAddr);
+    ButtonPort->configurePort(0xFFFF);
+  }
   
 public:
   /**
@@ -21,17 +31,7 @@ public:
   */
   UserButton():ButtonPortAddr(Def::enumPort::PortB)
   {
-    ButtonPort = new GPIO(ButtonPortAddr);
-    //Init();
-  }
-  
-  /**
-  * @brief Creates a GPIO-Object and configures the port to an input-port
-  *
-  */
-  void Init()
-  {
-    ButtonPort->configurePort(0xFFFF);
+    Init();
   }
   
   /**
