@@ -21,19 +21,14 @@ int main()
 
   while(1){
 
-      currentState->performStateLogic();
-      State* nextState = currentState->transitionToNextState();
+    currentState->performStateLogic();
+    State* nextState = currentState->transitionToNextState();
 
-      if (nextState == nullptr) { // Do not override currentState, if transit-conditions are not met.
-        continue;
-      }
-        
-      delete currentState; // Delete the current state object
-        
-      currentState = nextState;
-
-  delete uHMI;
-  delete uCnt;
-  delete uMot;
-  delete currentState;
+    if (nextState == nullptr) { // Do not override currentState, if transit-conditions are not met.
+      continue;
+    }
+      
+    delete currentState; // Delete the current state object
+      
+    currentState = nextState;
 }
