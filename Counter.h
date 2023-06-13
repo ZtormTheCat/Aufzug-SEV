@@ -16,7 +16,7 @@ public:
   * @param v is the initial counter value
   */
   Counter(int v=0) : count(v) {}
-  
+
   /**
   * @brief Increments the counter value
   */
