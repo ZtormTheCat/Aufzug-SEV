@@ -20,7 +20,7 @@ int main()
   State* currentState = new State0(uHMI, uMot, uCnt);
 
   while(1){
-    try{
+
       currentState->performStateLogic();
       State* nextState = currentState->transitionToNextState();
 
@@ -31,12 +31,6 @@ int main()
       delete currentState; // Delete the current state object
         
       currentState = nextState;
-    }
-    catch(exception& e){
-      cout << to_string(e) << endl;
-      break;
-    }
-  }
 
   delete uHMI;
   delete uCnt;
