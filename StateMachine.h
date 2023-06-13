@@ -99,7 +99,7 @@ protected:
     Motor* uMot; /**< Object-Reference from Motor to set Motor-States */
     ModCounter* uCnt; /**< Object-Reference from Counter to get Count-Values */
     volatile int* currCntVal; /**< Current Counter Value: Volatile Integer pointing to a Return-Value */
-    int strdCnt; /**< Stored Counter Value
+    int strdCnt; /**< Stored Counter Value*/
 public:
     /**
      * @brief Override for Base-Class: State
