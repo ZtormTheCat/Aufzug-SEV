@@ -15,22 +15,18 @@ private:
 
   /**
   * @brief Creates a GPIO-Object and configures the port to an input-port
-  *
   */
   void Init()
   
 public:
   /**
   * @brief Construct a new UserButton object on port B
-  *
   */
   UserButton()
   
   /**
   * @brief Read the input signal of the pin on the port that is at ButtonPortAddr
-  *
   * @param pin The pin number of the input pin to read (value from 0 to 15)
-  *
   * @return false if a LOW signal is noticed at this pin, true if it's a HIGH signal
   */
   bool readButtonState(uint16_t pin)
