@@ -48,7 +48,7 @@ public:
   * @param mode 0 for Input, 1 for Output
   * @param outputType 0 for Push-Pull, 1 for Open-Drain
   * @param speed 0 for low speed
-  * @param 0 no Pull-Up/Pull-down, 1 for Pull-Up, 2 for Pull-Down
+  * @param pull 0 no Pull-Up/Pull-down, 1 for Pull-Up, 2 for Pull-Down
   */
    void configurePin(uint8_t pin, uint8_t mode, uint8_t outputType, uint8_t speed, uint8_t pull) {
         // Calculate register offset for the specified pin
